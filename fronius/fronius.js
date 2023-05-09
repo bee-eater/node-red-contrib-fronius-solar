@@ -68,6 +68,79 @@ module.exports = function(RED) {
       }).catch(function(e) {
         node.setNodeStatus('red', e);
       });
+    
+    } else if (node.querytype === 'inverterInfo') {
+      fronius.GetInverterInfo(node.options).then(function(json) { // eslint-disable-line
+        if (!node.isValidHead(json)) {
+          node.setNodeStatus('orange', json.Head.Status.UserMessage);
+          return;
+        }
+        msg.payload = json.Body.Data;
+        node.send(msg);
+      }).catch(function(e) {
+        node.setNodeStatus('red', e);
+      });
+
+    } else if (node.querytype === 'powerflow') {
+      fronius.GetPowerFlowRealtimeData(node.options).then(function(json) { // eslint-disable-line
+        if (!node.isValidHead(json)) {
+          node.setNodeStatus('orange', json.Head.Status.UserMessage);
+          return;
+        }
+        msg.payload = json.Body.Data;
+        node.send(msg);
+      }).catch(function(e) {
+        node.setNodeStatus('red', e);
+      });
+
+    } else if (node.querytype === 'activeDevice') {
+      fronius.GetActiveDeviceInfo(node.options).then(function(json) { // eslint-disable-line
+        if (!node.isValidHead(json)) {
+          node.setNodeStatus('orange', json.Head.Status.UserMessage);
+          return;
+        }
+        msg.payload = json.Body.Data;
+        node.send(msg);
+      }).catch(function(e) {
+        node.setNodeStatus('red', e);
+      });
+
+    } else if (node.querytype === 'meter') {
+      fronius.GetMeterRealtimeData(node.options).then(function(json) { // eslint-disable-line
+        if (!node.isValidHead(json)) {
+          node.setNodeStatus('orange', json.Head.Status.UserMessage);
+          return;
+        }
+        msg.payload = json.Body.Data;
+        node.send(msg);
+      }).catch(function(e) {
+        node.setNodeStatus('red', e);
+      });
+
+    } else if (node.querytype === 'ohmpilot') {
+      fronius.GetOhmpilotRealtimeData(node.options).then(function(json) { // eslint-disable-line
+        if (!node.isValidHead(json)) {
+          node.setNodeStatus('orange', json.Head.Status.UserMessage);
+          return;
+        }
+        msg.payload = json.Body.Data;
+        node.send(msg);
+      }).catch(function(e) {
+        node.setNodeStatus('red', e);
+      }); 
+
+    } else if (node.querytype === 'storage') {
+      fronius.GetStorageRealtimeData(node.options).then(function(json) { // eslint-disable-line
+        if (!node.isValidHead(json)) {
+          node.setNodeStatus('orange', json.Head.Status.UserMessage);
+          return;
+        }
+        msg.payload = json.Body.Data;
+        node.send(msg);
+      }).catch(function(e) {
+        node.setNodeStatus('red', e);
+      }); 
+
     } else if (node.querytype === 'components') {
       fronius.GetComponentsData(node.options).then(function(json) { // eslint-disable-line
         if (!node.isValidHead(json)) {
@@ -79,39 +152,7 @@ module.exports = function(RED) {
       }).catch(function(e) {
         setNodeStatus('red', e);
       });
-    } else if (node.querytype === 'powerflow') {
-      fronius.GetPowerFlowRealtimeDataData(node.options).then(function(json) { // eslint-disable-line
-        if (!node.isValidHead(json)) {
-          node.setNodeStatus('orange', json.Head.Status.UserMessage);
-          return;
-        }
-        msg.payload = json.Body.Data;
-        node.send(msg);
-      }).catch(function(e) {
-        node.setNodeStatus('red', e);
-      });
-    } else if (node.querytype === 'storage') {
-      fronius.GetStorageRealtimeData(node.options).then(function(json) { // eslint-disable-line
-        if (!node.isValidHead(json)) {
-          node.setNodeStatus('orange', json.Head.Status.UserMessage);
-          return;
-        }
-        msg.payload = json.Body.Data;
-        node.send(msg);
-      }).catch(function(e) {
-        node.setNodeStatus('red', e);
-      });
-    } else if (node.querytype === 'powermeter') {
-      fronius.GetPowerMeterRealtimeData(node.options).then(function(json) { // eslint-disable-line
-        if (!node.isValidHead(json)) {
-          node.setNodeStatus('orange', json.Head.Status.UserMessage);
-          return;
-        }
-        msg.payload = json.Body.Data;
-        node.send(msg);
-      }).catch(function(e) {
-        node.setNodeStatus('red', e);
-      });
+
     } else {
       node.setNodeStatus('orange', 'could not process query of ' +
         node.querytype);

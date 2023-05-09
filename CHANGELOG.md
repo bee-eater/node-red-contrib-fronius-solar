@@ -1,3 +1,18 @@
+
+<a name="v1.0.4"></a>
+# [v1.0.4](https://github.com/bee-eater/node-red-contrib-fronius-solar/releases/tag/v1.0.4) - 09 May 2023
+
+## 1.0.4 (2023-05-09)
+
+#### Bug Fixes
+
+* Updated API to match current one from fronius, using customized node-fronius-solar (https://github.com/bee-eater/node-fronius-solar)
+
+
+
+[Changes][v1.0.4]
+
+
 <a name="v1.0.3"></a>
 # [v1.0.3](https://github.com/mabunixda/node-red-contrib-fronius-solar/releases/tag/v1.0.3) - 16 Dec 2021
 
@@ -59,6 +74,7 @@
 [Changes][v1.0.0]
 
 
+[v1.0.4]: https://github.com/bee-eater/node-red-contrib-fronius-solar/compare/v1.0.3...v1.0.4
 [v1.0.3]: https://github.com/mabunixda/node-red-contrib-fronius-solar/compare/v1.0.2...v1.0.3
 [v1.0.2]: https://github.com/mabunixda/node-red-contrib-fronius-solar/compare/v1.0.1...v1.0.2
 [v1.0.1]: https://github.com/mabunixda/node-red-contrib-fronius-solar/compare/v1.0.0...v1.0.1
